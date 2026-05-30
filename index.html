@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Sunflowers for Angelyn</title>
+
+<link rel="icon" type="image/png" href="/img/ang1.png">
+<link href="/img/ang1.png" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;overflow-x:hidden}
+body{
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  min-height:100vh;
+  padding:16px 8px 30px;
+  background:#f2f0ed;
+  font-family:'Lato',sans-serif;
+}
+#scene{
+  position:relative;
+  width:100%;
+  max-width:520px;
+}
+#scene svg{
+  width:100%;
+  height:auto;
+  display:block;
+  overflow:visible;
+}
+#bouquet{animation:sway 6s ease-in-out infinite;transform-origin:260px 620px}
+@keyframes sway{0%,100%{transform:rotate(-0.8deg)}50%{transform:rotate(0.8deg)}}
+.spark{position:absolute;border-radius:50%;pointer-events:none;animation:floatUp linear forwards}
+@keyframes floatUp{from{opacity:0;transform:translateY(0)}20%{opacity:.85}to{opacity:0;transform:translateY(-180px)}}
+#msg-wrap{
+  margin-top:14px;text-align:center;min-height:48px;
+  padding:0 12px;
+  width:100%;max-width:520px;
+}
+#msg .word{display:inline-block;opacity:0;transform:translateY(5px);animation:wordIn .45s ease forwards}
+@keyframes wordIn{to{opacity:1;transform:translateY(0)}}
+#msg{
+  font-family:'Lato',sans-serif;
+  font-size:clamp(14px, 4vw, 19px);
+  font-weight:300;color:#5a3a00;letter-spacing:.2px;
+  line-height:1.5;
+  color: white;
+}
+#sub{
+  font-family:'Lato',sans-serif;
+  font-size:clamp(10px, 2.5vw, 12px);
+  font-weight:300;color:#9a7030;letter-spacing:1.8px;
+  margin-top:5px;text-transform:uppercase;
+  opacity:0;transition:opacity 1.2s;
+}
+#photos-row{
+  display:flex;gap:clamp(6px,2vw,10px);
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:14px;
+  padding:0 8px;
+  width:100%;max-width:520px;
+  opacity:0;transition:opacity 1.4s;
+}
+#photos-row.show{opacity:1}
+.photo-circle{
+  width:clamp(48px,11vw,62px);
+  height:clamp(48px,11vw,62px);
+  border-radius:50%;
+  border:2.5px solid #c8a060;
+  object-fit:cover;
+  object-position:center top;
+  box-shadow:0 2px 8px rgba(90,50,0,0.18);
+  -webkit-transition:transform .25s;
+  transition:transform .25s;
+  cursor:default;
+  display:block;
+  /* iOS image rendering fix */
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+}
+@media(hover:hover){.photo-circle:hover{transform:scale(1.1);}}
+</style>
+</head>
+<body style="background-color: #4182EE !important;">
+<div id="scene">
+<svg viewBox="0 0 520 640" id="main-svg" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="pet1" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#ffe033"/>
+    <stop offset="40%" stop-color="#ffbb00"/>
+    <stop offset="100%" stop-color="#e07000"/>
+  </linearGradient>
+  <linearGradient id="pet2" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#ffd020"/>
+    <stop offset="50%" stop-color="#f5a800"/>
+    <stop offset="100%" stop-color="#c86000"/>
+  </linearGradient>
+  <linearGradient id="pet3" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#ffe84a"/>
+    <stop offset="50%" stop-color="#ffc200"/>
+    <stop offset="100%" stop-color="#d07500"/>
+  </linearGradient>
+  <radialGradient id="disk" cx="40%" cy="35%" r="65%">
+    <stop offset="0%" stop-color="#4a2800"/>
+    <stop offset="35%" stop-color="#2e1500"/>
+    <stop offset="70%" stop-color="#1a0a00"/>
+    <stop offset="100%" stop-color="#0d0500"/>
+  </radialGradient>
+  <radialGradient id="diskSm" cx="38%" cy="33%" r="65%">
+    <stop offset="0%" stop-color="#3e2200"/>
+    <stop offset="40%" stop-color="#220e00"/>
+    <stop offset="100%" stop-color="#0d0500"/>
+  </radialGradient>
+  <linearGradient id="stemG" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#1a4a1c"/>
+    <stop offset="45%" stop-color="#2e7d32"/>
+    <stop offset="100%" stop-color="#1a4a1c"/>
+  </linearGradient>
+  <linearGradient id="kraft1" x1="0%" y1="0%" x2="60%" y2="100%">
+    <stop offset="0%" stop-color="#c8955a"/>
+    <stop offset="40%" stop-color="#b07840"/>
+    <stop offset="100%" stop-color="#8a5c28"/>
+  </linearGradient>
+  <linearGradient id="kraft2" x1="100%" y1="0%" x2="30%" y2="100%">
+    <stop offset="0%" stop-color="#d4a468"/>
+    <stop offset="50%" stop-color="#be8a48"/>
+    <stop offset="100%" stop-color="#9a6a30"/>
+  </linearGradient>
+  <linearGradient id="kraft3" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ddb070"/>
+    <stop offset="100%" stop-color="#a87838"/>
+  </linearGradient>
+  <linearGradient id="kraftCenter" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#c89050"/>
+    <stop offset="100%" stop-color="#7a4e20"/>
+  </linearGradient>
+  <linearGradient id="twineG" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#d4b07a"/>
+    <stop offset="50%" stop-color="#e8c888"/>
+    <stop offset="100%" stop-color="#d4b07a"/>
+  </linearGradient>
+  <radialGradient id="eucaG" cx="50%" cy="50%" r="60%">
+    <stop offset="0%" stop-color="#b8c9b0"/>
+    <stop offset="100%" stop-color="#7a9e80"/>
+  </radialGradient>
+  <filter id="fShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="#3a1e00" flood-opacity=".30"/>
+  </filter>
+  <filter id="wrapShadow" x="-10%" y="-10%" width="120%" height="120%">
+    <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#3a1e00" flood-opacity=".20"/>
+  </filter>
+  <filter id="petalShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#8a4a00" flood-opacity=".22"/>
+  </filter>
+  <filter id="diskFilter" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity=".4"/>
+  </filter>
+  <clipPath id="stemClip">
+    <rect x="0" y="340" width="520" height="90"/>
+  </clipPath>
+</defs>
+
+<g id="bouquet">
+
+<polygon points="110,260 185,150 265,270" fill="#9a6a2a" opacity=".7"/>
+<polygon points="220,220 290,110 370,240" fill="#a87838" opacity=".65"/>
+<polygon points="300,200 390,100 460,230" fill="#9a6a2a" opacity=".65"/>
+<polygon points="390,230 460,140 520,280" fill="#a07030" opacity=".6"/>
+<polygon points="60,300 130,170 200,300" fill="#8a5c22" opacity=".6"/>
+<polygon points="80,320 175,190 240,330" fill="url(#kraft1)" opacity=".85"/>
+<polygon points="170,280 255,160 330,290" fill="url(#kraft2)" opacity=".8"/>
+<polygon points="280,260 370,150 440,280" fill="url(#kraft1)" opacity=".8"/>
+<polygon points="370,290 455,175 510,310" fill="url(#kraft2)" opacity=".8"/>
+
+<g opacity=".88">
+  <line x1="155" y1="460" x2="120" y2="340" stroke="#5a7858" stroke-width="2" fill="none"/>
+  <line x1="155" y1="460" x2="100" y2="300" stroke="#4e6e4e" stroke-width="1.5" fill="none"/>
+  <line x1="155" y1="460" x2="85" y2="260" stroke="#4e6e4e" stroke-width="1.5" fill="none"/>
+  <ellipse cx="108" cy="330" rx="22" ry="13" fill="url(#eucaG)" transform="rotate(-35 108 330)"/>
+  <ellipse cx="92" cy="292" rx="20" ry="12" fill="#a8bca5" transform="rotate(-50 92 292)"/>
+  <ellipse cx="78" cy="255" rx="18" ry="11" fill="url(#eucaG)" transform="rotate(-60 78 255)"/>
+  <ellipse cx="125" cy="270" rx="19" ry="11" fill="#9aae98" transform="rotate(-25 125 270)"/>
+  <ellipse cx="100" cy="220" rx="17" ry="10" fill="#b0c4ae" transform="rotate(-70 100 220)"/>
+  <ellipse cx="140" cy="230" rx="16" ry="10" fill="url(#eucaG)" transform="rotate(-40 140 230)"/>
+  <line x1="365" y1="460" x2="400" y2="340" stroke="#5a7858" stroke-width="2" fill="none"/>
+  <line x1="365" y1="460" x2="420" y2="300" stroke="#4e6e4e" stroke-width="1.5" fill="none"/>
+  <line x1="365" y1="460" x2="435" y2="255" stroke="#4e6e4e" stroke-width="1.5" fill="none"/>
+  <ellipse cx="412" cy="330" rx="22" ry="13" fill="url(#eucaG)" transform="rotate(35 412 330)"/>
+  <ellipse cx="428" cy="292" rx="20" ry="12" fill="#a8bca5" transform="rotate(50 428 292)"/>
+  <ellipse cx="442" cy="248" rx="18" ry="11" fill="url(#eucaG)" transform="rotate(60 442 248)"/>
+  <ellipse cx="395" cy="270" rx="19" ry="11" fill="#9aae98" transform="rotate(25 395 270)"/>
+  <ellipse cx="420" cy="220" rx="17" ry="10" fill="#b0c4ae" transform="rotate(70 420 220)"/>
+  <ellipse cx="380" cy="230" rx="16" ry="10" fill="url(#eucaG)" transform="rotate(40 380 230)"/>
+  <line x1="260" y1="430" x2="260" y2="290" stroke="#5a7858" stroke-width="1.5" fill="none"/>
+  <ellipse cx="245" cy="275" rx="16" ry="9" fill="url(#eucaG)" transform="rotate(-15 245 275)"/>
+  <ellipse cx="275" cy="265" rx="16" ry="9" fill="#9aae98" transform="rotate(20 275 265)"/>
+  <ellipse cx="255" cy="250" rx="14" ry="8" fill="#b0c4ae" transform="rotate(-5 255 250)"/>
+</g>
+
+<path d="M185 310 C180 380,200 460,230 570" stroke="url(#stemG)" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M230 270 C228 360,238 460,248 570" stroke="url(#stemG)" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M260 240 C260 340,260 460,260 570" stroke="url(#stemG)" stroke-width="8" fill="none" stroke-linecap="round"/>
+<path d="M295 265 C298 360,282 460,272 570" stroke="url(#stemG)" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M335 290 C338 375,310 460,285 570" stroke="url(#stemG)" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M155 340 C148 400,185 480,225 572" stroke="url(#stemG)" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M365 340 C372 400,335 480,295 572" stroke="url(#stemG)" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+<g clip-path="url(#stemClip)">
+  <path d="M185 340 C181 365,196 395,205 420" stroke="#3a8040" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".5"/>
+  <path d="M230 340 C228 365,236 395,241 420" stroke="#3a8040" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".5"/>
+  <path d="M260 340 C260 365,260 395,260 420" stroke="#3a8040" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".5"/>
+  <path d="M295 340 C297 365,286 395,281 420" stroke="#3a8040" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".5"/>
+  <path d="M335 345 C336 368,320 395,312 420" stroke="#3a8040" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".5"/>
+  <ellipse cx="175" cy="370" rx="14" ry="7" fill="#2e7d32" opacity=".9" transform="rotate(-40 175 370)"/>
+  <ellipse cx="220" cy="360" rx="13" ry="6" fill="#388e3c" opacity=".85" transform="rotate(-25 220 360)"/>
+  <ellipse cx="305" cy="360" rx="13" ry="6" fill="#2e7d32" opacity=".85" transform="rotate(25 305 360)"/>
+  <ellipse cx="348" cy="368" rx="14" ry="7" fill="#388e3c" opacity=".9" transform="rotate(38 348 368)"/>
+  <ellipse cx="268" cy="385" rx="12" ry="6" fill="#2e7d32" opacity=".8" transform="rotate(15 268 385)"/>
+</g>
+
+<g id="flowerGroup"></g>
+
+<path d="M60 380 Q100 360 260 340 Q420 360 460 380 L390 600 Q260 620 130 600 Z" fill="url(#kraft3)" filter="url(#wrapShadow)"/>
+<path d="M60 380 Q130 355 200 370 L150 600 Q90 590 80 570 Z" fill="url(#kraft1)"/>
+<path d="M460 380 Q390 355 320 370 L370 600 Q430 590 440 570 Z" fill="url(#kraft2)"/>
+<path d="M200 370 Q260 345 320 370 L295 600 Q260 610 225 600 Z" fill="#a07030" opacity=".3"/>
+<line x1="160" y1="380" x2="120" y2="598" stroke="#8a5c22" stroke-width="1" opacity=".35"/>
+<line x1="210" y1="368" x2="185" y2="600" stroke="#8a5c22" stroke-width=".8" opacity=".28"/>
+<line x1="310" y1="368" x2="335" y2="600" stroke="#8a5c22" stroke-width=".8" opacity=".28"/>
+<line x1="360" y1="380" x2="400" y2="598" stroke="#8a5c22" stroke-width="1" opacity=".35"/>
+<path d="M60 380 Q80 360 145 365 L100 598 Q68 585 65 560 Z" fill="#e8c080" opacity=".18"/>
+<path d="M62 382 Q90 372 120 376 Q150 370 180 374 Q210 368 240 372 Q270 366 300 370 Q330 366 360 372 Q390 368 420 374 Q445 370 458 378" stroke="#c8955a" stroke-width="2" fill="none" opacity=".6"/>
+
+<circle cx="260" cy="490" r="22" fill="#f0e0c0" stroke="#c8a060" stroke-width="1"/>
+<circle cx="260" cy="490" r="18" fill="none" stroke="#c8a060" stroke-width=".6"/>
+<text x="260" y="487" text-anchor="middle" font-family="Lato,sans-serif" font-size="5.5" fill="#8a6030" letter-spacing=".5">Specially</text>
+<text x="260" y="495" text-anchor="middle" font-family="Lato,sans-serif" font-size="4.5" fill="#a07840" letter-spacing=".3">for you</text>
+
+<path d="M148 555 Q260 540 372 555 Q370 585 260 590 Q150 585 148 555Z" fill="url(#kraftCenter)"/>
+<ellipse cx="260" cy="558" rx="112" ry="8" fill="none" stroke="url(#twineG)" stroke-width="3.5"/>
+<ellipse cx="260" cy="566" rx="110" ry="7" fill="none" stroke="url(#twineG)" stroke-width="2.5"/>
+<ellipse cx="260" cy="573" rx="108" ry="6" fill="none" stroke="#d4b07a" stroke-width="2"/>
+<path d="M260 562 Q220 545 195 555 Q180 562 195 572 Q220 578 260 562Z" fill="#e8c888" stroke="#c8a860" stroke-width=".8"/>
+<path d="M260 562 Q300 545 325 555 Q340 562 325 572 Q300 578 260 562Z" fill="#e0c080" stroke="#c0a050" stroke-width=".8"/>
+<ellipse cx="260" cy="562" rx="12" ry="7" fill="#f0d898" stroke="#c8a860" stroke-width=".8"/>
+<path d="M250 566 Q230 590 215 608" stroke="#d4b070" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<path d="M270 566 Q290 590 305 608" stroke="#c8a860" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+</g>
+</svg>
+</div>
+
+<div id="msg-wrap">
+  <div id="msg"></div>
+  <div id="sub" style="color: white;">Good luck and wishing you all the best! 🌟</div>
+</div>
+
+<div id="photos-row">
+  <img class="photo-circle" src="/img/ang1.png" alt="Angelyn with sunflowers" loading="lazy"/>
+  <img class="photo-circle" src="/img/ang2.png" alt="Angelyn at Mayon Volcano" loading="lazy"/>
+  <img class="photo-circle" src="/img/ang3.png" alt="Angelyn smiling" loading="lazy"/>
+  <img class="photo-circle" src="/img/ang4.png" alt="Angelyn selfie" loading="lazy"/>
+  <img class="photo-circle" src="/img/ang5.png" alt="Angelyn at the beach" loading="lazy"/>
+</div>
+
+<script>
+(function(){
+var NS='http://www.w3.org/2000/svg';
+function svgEl(tag,attrs){
+  var e=document.createElementNS(NS,tag);
+  for(var k in attrs) e.setAttribute(k,attrs[k]);
+  return e;
+}
+function drawSunflower(parent,cx,cy,petalLen,petalW,diskR,petGrad,diskGrad,petalCount){
+  var g=svgEl('g',{filter:'url(#fShadow)'});
+  var outer=svgEl('g',{opacity:'0.92',filter:'url(#petalShadow)'});
+  for(var i=0;i<petalCount;i++){
+    var angle=(360/petalCount)*i;
+    outer.appendChild(svgEl('ellipse',{cx:cx,cy:cy-(diskR+petalLen*0.42),rx:petalW,ry:petalLen*0.58,fill:'url(#'+petGrad+')',transform:'rotate('+angle+' '+cx+' '+cy+')'}));
+  }
+  g.appendChild(outer);
+  var inner=svgEl('g',{opacity:'0.85'});
+  for(var i=0;i<petalCount;i++){
+    var angle=(360/petalCount)*i+(360/petalCount/2);
+    inner.appendChild(svgEl('ellipse',{cx:cx,cy:cy-(diskR+petalLen*0.28),rx:petalW*0.75,ry:petalLen*0.42,fill:'url(#pet2)',transform:'rotate('+angle+' '+cx+' '+cy+')'}));
+  }
+  g.appendChild(inner);
+  g.appendChild(svgEl('circle',{cx:cx,cy:cy,r:diskR,fill:'url(#'+diskGrad+')',filter:'url(#diskFilter)'}));
+  var r1=diskR*0.78,n1=Math.round(2*Math.PI*r1/5);
+  for(var i=0;i<n1;i++){var a=(2*Math.PI/n1)*i;g.appendChild(svgEl('circle',{cx:cx+Math.cos(a)*r1,cy:cy+Math.sin(a)*r1,r:diskR*0.075,fill:'#5a3010',opacity:'.85'}));}
+  var r2=diskR*0.54,n2=Math.round(2*Math.PI*r2/5);
+  for(var i=0;i<n2;i++){var a=(2*Math.PI/n2)*i+0.3;g.appendChild(svgEl('circle',{cx:cx+Math.cos(a)*r2,cy:cy+Math.sin(a)*r2,r:diskR*0.07,fill:'#3a1e08',opacity:'.9'}));}
+  var r3=diskR*0.3,n3=Math.round(2*Math.PI*r3/5);
+  for(var i=0;i<n3;i++){var a=(2*Math.PI/n3)*i+0.6;g.appendChild(svgEl('circle',{cx:cx+Math.cos(a)*r3,cy:cy+Math.sin(a)*r3,r:diskR*0.075,fill:'#2a1205',opacity:'.95'}));}
+  g.appendChild(svgEl('circle',{cx:cx,cy:cy,r:diskR*0.1,fill:'#180800',opacity:'.9'}));
+  g.appendChild(svgEl('ellipse',{cx:cx-diskR*0.25,cy:cy-diskR*0.28,rx:diskR*0.22,ry:diskR*0.14,fill:'#7a4820',opacity:'.3',transform:'rotate(-30 '+(cx-diskR*0.25)+' '+(cy-diskR*0.28)+')'}));
+  parent.appendChild(g);
+}
+  var fg=document.getElementById('flowerGroup');
+  drawSunflower(fg,175,210,56,11,28,'pet2','diskSm',22);
+  drawSunflower(fg,260,175,62,12,31,'pet3','disk',22);
+  drawSunflower(fg,345,210,56,11,28,'pet1','diskSm',22);
+  drawSunflower(fg,130,295,58,11,30,'pet1','disk',22);
+  drawSunflower(fg,210,265,60,11,30,'pet2','diskSm',22);
+  drawSunflower(fg,310,265,60,12,30,'pet3','disk',22);
+  drawSunflower(fg,390,295,58,11,29,'pet1','diskSm',22);
+  drawSunflower(fg,185,355,64,12,33,'pet3','disk',24);
+  drawSunflower(fg,270,340,68,13,35,'pet1','diskSm',24);
+  drawSunflower(fg,355,355,64,12,33,'pet2','disk',24);
+
+var msg=document.getElementById('msg');
+var sub=document.getElementById('sub');
+var photosRow=document.getElementById('photos-row');
+var text='🌻 Congratulations Angelyn for your new job!';
+var words=text.split(' ');
+
+words.forEach(function(word,i){
+  var span=document.createElement('span');
+  span.className='word';
+  span.textContent=word+'\u00A0';
+  span.style.animationDelay=(800+i*170)+'ms';
+  msg.appendChild(span);
+});
+
+var delay=800+words.length*170+600;
+setTimeout(function(){sub.style.opacity='1';},delay);
+setTimeout(function(){photosRow.classList.add('show');},delay+500);
+
+var scene=document.getElementById('scene');
+var sparkColors=['#ffd54f','#ffe082','#ffca28','#fff176','#ffb300'];
+function spark(){
+  var s=document.createElement('div');
+  s.className='spark';
+  var sz=3+Math.random()*5;
+  var sceneW=scene.offsetWidth;
+  var sceneH=scene.offsetHeight;
+  s.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(sceneW*0.08+Math.random()*sceneW*0.84)+'px;top:'+(30+Math.random()*sceneH*0.78)+'px;background:'+sparkColors[Math.floor(Math.random()*sparkColors.length)]+';animation-duration:'+(3+Math.random()*3.5)+'s;box-shadow:0 0 '+(sz*2)+'px #ffd54f;';
+  scene.appendChild(s);
+  setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s);},6500);
+}
+setInterval(spark,320);
+
+})();
+</script>
+</body>
+</html>
